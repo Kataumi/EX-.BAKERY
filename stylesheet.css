@@ -166,6 +166,7 @@ img{
     padding: 100px 8% 50px 6%;
     top: 100px;
     left: 0;
+    z-index: 1; /* 追加 */
 }
 
 dl{
@@ -186,18 +187,37 @@ dd{
     margin-bottom:10px;
 }
 
-.company-photo img{
+.company-photo {
+    display: flex;
+    float: right;
+    position: absolute;
+    top: 100px;
+    right: 10%;
+    width: 50%;
+    height: 60%;
+    z-index: 2; /* 追加 */
+}
+
+.company-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} 
+
+/* .company-photo img{
     float: right;
     width: 50%;
     height: 60%;
     position: absolute;
     top:180px;
-}
+} */
 
 /* footer */
 
 #footer{
     text-align: center;
+    position: relative; /* 追加 */
+    z-index: 1; /* 追加 */
 }
 
 /* icon */
@@ -221,6 +241,10 @@ dd{
 }
 
 @media screen and (max-width: 768px) {
+    body{
+        overflow-x: hidden;
+    }
+
     #header {
         flex-direction: column;
         align-items: flex-start;
@@ -258,17 +282,74 @@ dd{
         
     }
 
-    .company-photo img {
-        justify-content: flex-start;
+    .company-photo {
+        position: relative;
+        align-items: center;
+        padding: 0 0 0 50px;
     }
 
     #company .company-info {
+        padding: 100% 6% 30px 6%;
+    }
+
+    dl {
+        flex-direction: column;
+    }
+
+    dt,
+    dd {
         width: 100%;
-        padding: 50px 60% 10px 6%;
-        
     }
 
     #footer{
-        padding-top: 30px;
+        padding-top: 700px; 
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    #header li {
+        padding: 10px 10px 0 0;
+        font-size: 20px;
+    }
+
+    #header h1 {
+        padding: 10px 0 20px 0;
+    }
+
+    #main img {
+        left: 0;
+    }
+
+    #about img {
+        left: 0;
+    }
+
+    #business img {
+        width: 100%;
+        height: auto;
+    }
+
+    .company-photo {
+        position: relative;
+        align-items: center;
+        padding: 0 0 0 50px;
+    }
+
+    #company .company-info {
+        padding: 100% 8% 30px 6%;
+    }
+
+    dl {
+        flex-direction: column;
+    }
+
+    dt,
+    dd {
+        width: 100%;
+    }
+
+    #footer{
+        padding-top: 480px;
     }
 }
